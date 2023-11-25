@@ -10,7 +10,7 @@ const SITE_URL =
 
 const FACEBOOK_APP_ID = 'XXXXXXXXX';
 
-const defaultTitle = 'Rich Parfum admin Panel';
+const defaultTitle = 'Evolution Motors admin Panel';
 const defaultDescription =
   'Admin Panel';
 const defaultImage =

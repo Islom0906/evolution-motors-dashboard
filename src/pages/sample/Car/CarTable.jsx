@@ -26,21 +26,20 @@ const CarTable = ({data,deleteHandle}) => {
         setReverseData(reverse)
     },[data])
 
-    console.log(reverseData)
 
 
     const columns = [
-        {
-            title: 'Brand',
-            dataIndex: 'brand',
-            id: 'brand',
-            render: (text) => <p>{text.title_ru}</p>,
-        },
         {
             title: 'Model Cars Uz',
             dataIndex: 'title_uz',
             id: 'title_uz',
             render: (text) => <p>{text}</p>,
+        },
+        {
+            title: 'Brand',
+            dataIndex: 'brand',
+            id: 'brand',
+            render: (text) => <p>{text?.title_ru}</p>,
         },
         {
             title: 'Price',
@@ -96,7 +95,7 @@ const CarTable = ({data,deleteHandle}) => {
         <div>
             <Table
                 columns={columns}
-                dataSource={data}
+                dataSource={reverseData}
                 rowKey={(record) => record.id}
             />
         </div>

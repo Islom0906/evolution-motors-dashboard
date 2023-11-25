@@ -34,7 +34,7 @@ const initialValueForm = {
 };
 
 
-const OptionPostEdit = () => {
+const ServicePostEdit = () => {
 
     const [form] = Form.useForm();
     const navigate = useNavigate()
@@ -474,4 +474,4 @@ const OptionPostEdit = () => {
     </div>);
 };
 
-export default OptionPostEdit;
+export default ServicePostEdit;

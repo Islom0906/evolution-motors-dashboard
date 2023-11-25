@@ -85,7 +85,6 @@ const SocialPostEdit = () => {
         }
 
         if (postSocialSuccess || putSocialSuccess) {
-
             navigate('/social')
         }
     }, [postSocial,putData])

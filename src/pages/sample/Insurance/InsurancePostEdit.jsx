@@ -34,7 +34,7 @@ const initialValueForm = {
 };
 
 
-const OptionPostEdit = () => {
+const CarPostEdit = () => {
 
     const [form] = Form.useForm();
     const navigate = useNavigate()
@@ -472,4 +472,4 @@ const OptionPostEdit = () => {
     </div>);
 };
 
-export default OptionPostEdit;
+export default CarPostEdit;

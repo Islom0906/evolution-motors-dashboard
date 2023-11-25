@@ -42,8 +42,8 @@ export const getUserFromJwtAuth = (user) => {
   if (user)
     return {
       id: 1,
-      uid: user?._id,
-      displayName: user?.name,
+      uid: user?.id,
+      displayName: user?.first_name,
       email: user?.email,
       photoURL: user?.avatar,
       role: authRole?.user,

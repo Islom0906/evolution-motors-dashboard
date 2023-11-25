@@ -28,7 +28,9 @@ const CountriesPostEdit = React.lazy(() => import('./Countires/CountriesPostEdit
 const Brand = React.lazy(() => import('./Brand'));
 const BrandPostEdit = React.lazy(() => import('./Brand/BrandPostEdit'));
 const Car = React.lazy(() => import('./Car'));
-// const CarPostEdit = React.lazy(() => import('./Car/CarPostEdit'));
+const CarPostEdit = React.lazy(() => import('./Car/CarPostEdit'));
+const Region = React.lazy(() => import('./Region'));
+const RegionPostEdit = React.lazy(() => import('./Region/RegionPostEdit'));
 
 export const samplePagesConfigs = [
 
@@ -157,9 +159,19 @@ export const samplePagesConfigs = [
     path: '/car',
     element: <Car/>,
   },
-  // {
-  //   permittedRole: RoutePermittedRole.user,
-  //   path: '/car/add',
-  //   element: <CarPostEdit/>,
-  // },
+  {
+    permittedRole: RoutePermittedRole.user,
+    path: '/car/add',
+    element: <CarPostEdit/>,
+  },
+  {
+    permittedRole: RoutePermittedRole.user,
+    path: '/region',
+    element: <Region/>,
+  },
+  {
+    permittedRole: RoutePermittedRole.user,
+    path: '/region/add',
+    element: <RegionPostEdit/>,
+  },
 ];

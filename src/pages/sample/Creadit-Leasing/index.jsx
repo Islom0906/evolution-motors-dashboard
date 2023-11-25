@@ -1,5 +1,5 @@
 import CreaditLeasingTable from './CreaditLeasingTable';
-import {Button, Col, Input, message, Row, Space, Spin} from 'antd';
+import {message, Space, Spin,Row,Col,Button} from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import {useNavigate} from 'react-router-dom';
 import apiService from '../../../@crema/services/apis/api';
@@ -37,10 +37,10 @@ const Index = () => {
     <div className={'site-space-compact-wrapper'}>
       <Space direction={'vertical'} style={{width: '100%'}}>
         <Row gutter={20}>
-          <Col span={16}>
-            <Input  />
-          </Col>
-          <Col span={8}>
+          {/*<Col span={16}>*/}
+          {/*  <Input  />*/}
+          {/*</Col>*/}
+          <Col span={8} offset={16}>
             <Button
                 disabled={data?.title_uz}
               type='primary'

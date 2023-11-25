@@ -1,17 +1,18 @@
 import React from 'react';
 import AboutTable from './AboutTable';
-import {Button, Col, Input, message, Row, Space, Spin} from 'antd';
-import {PlusOutlined} from '@ant-design/icons';
-import {useNavigate} from 'react-router-dom';
+import {Button, Col, message, Row, Space, Spin} from 'antd';
+
 import apiService from '../../../@crema/services/apis/api';
 import { useQuery} from 'react-query';
-import {EDIT_DATA} from '../../../shared/constants/ActionTypes';
-import {useDispatch} from 'react-redux';
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {EDIT_DATA} from "../../../shared/constants/ActionTypes";
+import {PlusOutlined} from "@ant-design/icons";
+
 
 const Index = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const {
     data,
     isLoading: getCategoryLoading} = useQuery('about-get', () => apiService.getData('/about/about-company/'), {
@@ -23,23 +24,20 @@ const Index = () => {
     },
   });
 
-
-
-
   const addArticle = () => {
     dispatch({type: EDIT_DATA, payload: ''});
     navigate('/about/add');
   };
 
 
+
+
   return (
       <div className={'site-space-compact-wrapper'}>
         <Space direction={'vertical'} style={{width: '100%'}}>
           <Row gutter={20}>
-            <Col span={16}>
-              <Input  />
-            </Col>
-            <Col span={8}>
+
+            <Col span={8} offset={16}>
               <Button
                   disabled={data?.title_uz}
                   type='primary'

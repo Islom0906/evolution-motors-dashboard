@@ -53,7 +53,8 @@ const AppSidebar = ({visible, onClose}) => {
         placement={direction === ThemeDirection.LTR ? 'left' : 'right'}
         closable={false}
         onClose={onClose}
-        visible={visible}>
+        open={visible}
+      >
         <div className='app-BitBucket-sidebar-wrapper'>
           <BucketMinibar />
           {sideBarComponent()}

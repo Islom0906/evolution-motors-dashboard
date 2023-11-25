@@ -33,7 +33,9 @@ body {
 }
 
 .site-logo img {
+  height: 70px;
   width: 100%;
+  object-fit: contain;
 }
 
 .loader-spin {

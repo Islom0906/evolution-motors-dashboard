@@ -88,7 +88,7 @@ const TypesPostEdit = () => {
     }, [postTypes, putData])
 
 
-    // if edit contact
+    // if edit types
     useEffect(() => {
         if (editId !== "") {
             editTypesRefetch();

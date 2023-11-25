@@ -11,8 +11,10 @@ import FormInput from "../../../@crema/core/Form/FormInput";
 const initialValueForm = {
     title_uz: "",
     title_ru: "",
-    type:null
+    type:[]
 };
+
+
 
 
 
@@ -114,12 +116,18 @@ const CountriesPostEdit = () => {
 
     //edit countries
     useEffect(() => {
+        const type=[]
         if (editCountriesSuccess) {
 
+            editCountriesData?.types.map(types=>{
+                type.push(types.id)
+            })
+
+            console.log(editCountriesData)
             const edit = {
                 title_uz: editCountriesData.title_uz,
                 title_ru: editCountriesData.title_ru,
-                type: editCountriesData.car_type.id,
+                type
             }
 
             form.setFieldsValue(edit)
@@ -131,17 +139,12 @@ const CountriesPostEdit = () => {
     const onFinish = (values) => {
 
 
-        const formData = new FormData();
-
-        formData.append('title_uz', values.title_uz);
-        formData.append('title_ru', values.title_ru);
-        formData.append('type', values.type);
 
 
         if (editCountriesData) {
-            putCountries({url: '/cars/countries', data: formData, id: editId})
+            putCountries({url: '/cars/countries', data: values, id: editId})
         } else {
-            postCountriesMutate({url: "/cars/countries/", data: formData});
+            postCountriesMutate({url: "/cars/countries/", data: values});
         }
 
 
@@ -241,6 +244,7 @@ const CountriesPostEdit = () => {
                                 }}
                             >
                                 <Select
+                                    mode={'multiple'}
                                     style={{
                                         width: '100%',
                                     }}
