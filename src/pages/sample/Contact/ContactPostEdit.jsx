@@ -15,8 +15,9 @@ const initialValueForm = {
     address_ru: "",
     phone_number: "",
     email: "",
-    working_hours_uz: "",
-    working_hours_ru: "",
+    start_time: "",
+    end_time: "",
+    map:""
 
 };
 
@@ -116,8 +117,9 @@ const ContactPostEdit = () => {
                 address_ru: editContactData.address_ru,
                 phone_number: editContactData.phone_number,
                 email: editContactData.email,
-                working_hours_uz: editContactData.working_hours_uz,
-                working_hours_ru: editContactData.working_hours_ru,
+                start_time: editContactData.start_time,
+                end_time: editContactData.end_time,
+                map:editContactData.map
             }
             form.setFieldsValue(edit)
         }
@@ -235,21 +237,28 @@ const ContactPostEdit = () => {
                         <Col span={12}>
                             <FormInput
                                 required={true}
-                                required_text={'Ish soatini kiriting'}
-                                label={'Ish soati'}
-                                name={'working_hours_uz'}
+                                required_text={'Введите начало рабочего времени'}
+                                label={'Начало рабочего времени'}
+                                name={'start_time'}
                             />
 
                         </Col>
                         <Col span={12}>
                             <FormInput
                                 required={true}
-                                required_text={'Необходимо ввести рабочее время'}
-                                label={'Рабочее время'}
-                                name={'working_hours_ru'}
+                                required_text={'Введите конец рабочего времени'}
+                                label={'Конец рабочего времени'}
+                                name={'end_time'}
                             />
                         </Col>
-
+                        <Col span={24}>
+                            <FormInput
+                                required={true}
+                                required_text={'Введите ссылку на геолокацию'}
+                                label={'Ссылка на геолокацию'}
+                                name={'map'}
+                            />
+                        </Col>
                     </Row>
 
                     <Button type="primary" htmlType="submit" style={{width: "100%", marginTop: "20px"}}>

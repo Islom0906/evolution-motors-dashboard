@@ -12,6 +12,7 @@ import {EDIT_DATA} from "../../../shared/constants/ActionTypes";
 import FormInput from "../../../@crema/core/Form/FormInput";
 import FormTextArea from "../../../@crema/core/Form/FormTextArea";
 
+
 const {Title}=Typography
 
 
@@ -474,7 +475,7 @@ const AboutPostEdit = () => {
                         <FormTextArea
                             required={true}
                             required_text={'Asosiy matn sarlavha kiritish kerak'}
-                            label={'Asosiy matn Uz'}
+                            label={'Asosiy sarlavha Uz'}
                             name={'main_title_uz'}
                         />
 
@@ -483,7 +484,7 @@ const AboutPostEdit = () => {
                     <Col span={12}>
                         <FormTextArea
                             required={true} required_text={'Основной текст должен быть заголовком.'}
-                            label={'Основной текст Название Ru'}
+                            label={'Основной Название Ru'}
                             name={'main_title_ru'}
                         />
 

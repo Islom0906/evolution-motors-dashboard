@@ -428,6 +428,7 @@ const CarPostEdit = () => {
                 status: "done",
                 url: imagesUpload?.images[0]?.url
             }
+            initialImage.push(uploadImg)
             form.setFieldsValue({interior_images: [uploadImg]});
             setFileListPropsInterior(initialImage);
             setIsUpload('')
@@ -468,6 +469,7 @@ const CarPostEdit = () => {
         }
     };
 
+    console.log(fileListPropsInterior)
     const onChangeInnerImage = ({fileList: newFileList}) => {
 
         if (fileListPropsInner.length !== 0 || newFileList.length === 0) {

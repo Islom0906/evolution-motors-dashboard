@@ -8,6 +8,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {EDIT_DATA} from "../../../shared/constants/ActionTypes";
 import FormInput from "../../../@crema/core/Form/FormInput";
 import FormTextArea from "../../../@crema/core/Form/FormTextArea";
+import {EditorState} from "draft-js";
+import {convertFromHTML, convertToHTML} from "draft-convert";
+import {Editor} from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import './NewsPostEdit.css'
+
+
 import ImgCrop from "antd-img-crop";
 
 const initialValueForm = {
@@ -32,7 +39,8 @@ const NewsPostEdit = () => {
 
 
     const [fileListProps, setFileListProps] = useState([]);
-
+    const [editorStatesUz, setEditorStatesUz] = useState(EditorState.createEmpty());
+    const [editorStatesRu, setEditorStatesRu] = useState(EditorState.createEmpty());
 
     // query-news
     const {
@@ -114,6 +122,9 @@ const NewsPostEdit = () => {
     useEffect(() => {
         if (editNewsSuccess) {
 
+            const initialEditorUz=EditorState.createWithContent(convertFromHTML(editNewsData.text_uz))
+            const initialEditorRu=EditorState.createWithContent(convertFromHTML(editNewsData.text_ru))
+
             const image=[{
                 uid: editNewsData.id,
                 name: editNewsData.id,
@@ -127,11 +138,13 @@ const NewsPostEdit = () => {
                 title_ru: editNewsData.title_ru,
                 sub_title_uz: editNewsData.sub_title_uz,
                 sub_title_ru: editNewsData.sub_title_ru,
-                text_uz: editNewsData.text_uz,
-                text_ru: editNewsData.text_ru,
+                text_uz: initialEditorUz,
+                text_ru: initialEditorRu,
                 image
             }
 
+            setEditorStatesUz(initialEditorUz)
+            setEditorStatesRu(initialEditorRu)
             setFileListProps(image)
             form.setFieldsValue(edit)
         }
@@ -141,6 +154,8 @@ const NewsPostEdit = () => {
 
     const onFinish = (values) => {
 
+        const itemsWithHtmlContentUz = convertToHTML(editorStatesUz.getCurrentContent());
+        const itemsWithHtmlContentRu = convertToHTML(editorStatesRu.getCurrentContent());
 
         const formData = new FormData();
 
@@ -148,8 +163,8 @@ const NewsPostEdit = () => {
         formData.append('title_ru', values.title_ru);
         formData.append('sub_title_uz', values.sub_title_uz);
         formData.append('sub_title_ru', values.sub_title_ru);
-        formData.append('text_uz', values.text_uz);
-        formData.append('text_ru', values.text_ru);
+        formData.append('text_uz', itemsWithHtmlContentUz);
+        formData.append('text_ru', itemsWithHtmlContentRu);
 
         if (fileListProps[0]?.originFileObj) {
             formData.append('image', fileListProps[0]?.originFileObj);
@@ -218,6 +233,13 @@ const NewsPostEdit = () => {
         imgWindow?.document.write(image.outerHTML);
     };
 
+
+    const onEditorStateChangeUz = (editorState) => {
+        setEditorStatesUz(editorState);
+    };
+    const onEditorStateChangeRu = (editorState) => {
+        setEditorStatesRu(editorState);
+    };
 
 
     return (
@@ -291,21 +313,52 @@ const NewsPostEdit = () => {
                     <Row gutter={20}>
 
                         <Col span={12}>
-                            <FormTextArea
-                                required={true}
-                                required_text={'Asosiy matn kiritish kerak'}
-                                label={'Asosiy matn Uz'}
-                                name={'text_uz'}
-                            />
+                            <Form.Item
+                                label={`Asosiy matn Uz`}
+                                name={"text_uz"}
+                                rules={[
+                                    {required: true, message: "Asosiy matn kiritish kerak"}
+                                ]}
+                                style={{width: "100%"}}
+                            >
+                                <Editor
+                                    editorState={editorStatesUz}
+                                    onEditorStateChange={(state) => onEditorStateChangeUz(state)}
+                                    editorClassName="editor-class"
+                                    toolbarClassName="toolbar-class"
+                                />
+                            </Form.Item>
+                            {/*<FormTextArea*/}
+                            {/*    required={true}*/}
+                            {/*    required_text={'Asosiy matn kiritish kerak'}*/}
+                            {/*    label={'Asosiy matn Uz'}*/}
+                            {/*    name={'text_uz'}*/}
+                            {/*/>*/}
 
 
                         </Col>
                         <Col span={12}>
-                            <FormTextArea
-                                required={true} required_text={'Вам необходимо ввести основной текст'}
-                                label={'Основной текст Ru'}
-                                name={'text_ru'}
-                            />
+                            <Form.Item
+                                label={`Основной текст Ru`}
+                                name={"text_ru"}
+                                rules={[
+                                    {required: true, message: "Вам необходимо ввести основной текст"}
+                                ]}
+                                style={{width: "100%"}}
+                            >
+                                <Editor
+                                    editorState={editorStatesRu}
+                                    onEditorStateChange={(state) => onEditorStateChangeRu(state)}
+                                    editorClassName="editor-class"
+                                    toolbarClassName="toolbar-class"
+                                />
+                            </Form.Item>
+                            {/*<FormTextArea*/}
+                            {/*    required={true} required_text={'Вам необходимо ввести основной текст'}*/}
+                            {/*    label={'Основной текст Ru'}*/}
+                            {/*    name={'text_ru'}*/}
+                            {/*/>*/}
+
 
                         </Col>
                     </Row>

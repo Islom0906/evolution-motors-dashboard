@@ -48,12 +48,6 @@ const ContactTable = ({data}) => {
             render: (text) => <p>{text}</p>,
         },
         {
-            title: 'Working Hour',
-            dataIndex: 'working_hours_ru',
-            id: 'working_hours_ru',
-            render: (text) => <p>{text}</p>,
-        },
-        {
             title: 'Action',
             id: 'action',
             render: (_, record) => (
