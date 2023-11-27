@@ -17,6 +17,7 @@ const CreaditLeasingTable = ({data}) => {
         dispatch({type:EDIT_DATA,payload:id})
         navigate('/creadit/add')
     };
+    console.log(data)
 
     // useEffect(()=>{
     //     const reverse=data?.reverse()
@@ -68,11 +69,15 @@ const CreaditLeasingTable = ({data}) => {
 
     return (
         <div>
+            {
+                data[0] &&
             <Table
                 columns={columns}
                 dataSource={data}
                 rowKey={(record) => record?.id}
             />
+
+            }
         </div>
     );
 };

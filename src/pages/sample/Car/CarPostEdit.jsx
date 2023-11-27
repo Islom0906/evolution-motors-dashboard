@@ -15,7 +15,7 @@ import FormInputNumber from "../../../@crema/core/Form/FormInputNumber";
 import AddTypeModal from "./AddTypeModal";
 import AddBrandModal from "./AddBrandModal";
 import AddCountryModal from "./AddCountryModal";
-
+import './carPostEdit.css'
 const {Title} = Typography
 
 
@@ -1076,7 +1076,7 @@ const CarPostEdit = () => {
                                                             <div key={childField.fieldKey} style={{marginBottom: 20}}>
                                                                 <Row gutter={20} >
 
-                                                                    <Col span={11} offset={1}>
+                                                                    <Col span={11} offset={1} className={'character-child'}>
                                                                         <FormInput
                                                                             required={true}
                                                                             required_text={'To\'ldirish talab qilinadi'}
@@ -1086,13 +1086,14 @@ const CarPostEdit = () => {
                                                                     </Col>
                                                                     <Col span={11} >
                                                                         <FormInput
-                                                                            required={true}
+                                                                            required={false}
                                                                             required_text={'To\'ldirish talab qilinadi'}
                                                                             label={`Xususiyat qiymati (4630×1910×1655) Uz ${childIndex + 1}`}
+                                                                            warning={'!!! Agar ✅ qo\'ymoqchi bo\'lsangiz qatorni bo\'sh qoldiring'}
                                                                             name={[childField.name, 'value_uz']}
                                                                         />
                                                                     </Col>
-                                                                    <Col span={11} offset={1}>
+                                                                    <Col span={11} offset={1} className={'character-child'}>
                                                                         <FormInput
                                                                             required={true}
                                                                             required_text={'Требуется заполнение'}
@@ -1103,9 +1104,11 @@ const CarPostEdit = () => {
 
                                                                     <Col span={11}>
                                                                         <FormInput
-                                                                            required={true}
+                                                                            required={false}
                                                                             required_text={'Требуется заполнение'}
-                                                                            label={`Характеристическое значение (4630×1910×1655) Ru ${childIndex + 1}`}
+                                                                            label={`Характеристическое значение (4630×1910×1655) Ru ${childIndex + 1},   
+                                                                            `}
+                                                                            warning={'!!! Если хотите поставить ✅, оставьте строку пустой'}
                                                                             name={[childField.name, 'value_ru']}
                                                                         />
                                                                     </Col>

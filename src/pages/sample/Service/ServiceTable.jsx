@@ -71,11 +71,14 @@ const ServiceTable = ({data}) => {
 
     return (
         <div>
-            <Table
-                columns={columns}
-                dataSource={data}
-                rowKey={(record) => record?.id}
-            />
+            {
+                data[0] &&
+                <Table
+                    columns={columns}
+                    dataSource={data}
+                    rowKey={(record) => record?.id}
+                />
+            }
         </div>
     );
 };
