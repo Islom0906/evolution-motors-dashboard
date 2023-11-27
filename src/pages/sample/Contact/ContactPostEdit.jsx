@@ -73,7 +73,7 @@ const ContactPostEdit = () => {
         },
         onError: (error) => {
             for (let obj in error.response.data) {
-                message.error(`${obj}: ${error.response.data[obj][0]}`)
+                message.error(`${obj}: ${error.response.data[obj]}`)
             }
         }
     });
@@ -238,7 +238,7 @@ const ContactPostEdit = () => {
                             <FormInput
                                 required={true}
                                 required_text={'Введите начало рабочего времени'}
-                                label={'Начало рабочего времени'}
+                                label={'Начало рабочего времени (например: 10:00)'}
                                 name={'start_time'}
                             />
 
@@ -247,7 +247,7 @@ const ContactPostEdit = () => {
                             <FormInput
                                 required={true}
                                 required_text={'Введите конец рабочего времени'}
-                                label={'Конец рабочего времени'}
+                                label={'Конец рабочего времени (например: 20:00)'}
                                 name={'end_time'}
                             />
                         </Col>
