@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {EDIT_DATA} from "../../../shared/constants/ActionTypes";
 import FormInput from "../../../@crema/core/Form/FormInput";
-import FormInputNumber from "../../../@crema/core/Form/FormInputNumber";
 import FormInputEmail from "../../../@crema/core/Form/FormInputEmail";
 
 const initialValueForm = {
@@ -214,7 +213,7 @@ const ContactPostEdit = () => {
 
                     <Row gutter={20}>
                         <Col span={12}>
-                            <FormInputNumber
+                            <FormInput
                                 required={true}
                                 required_text={'Вам необходимо ввести номер телефона'}
                                 label={'Номер телефона'}

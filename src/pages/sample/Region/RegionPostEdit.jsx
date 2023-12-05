@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Button, Col, Form, message, Row} from "antd";
+import {Button, Col, Form, message, Row, Typography} from "antd";
 import {useMutation, useQuery} from "react-query";
 import apiService from "../../../@crema/services/apis/api";
 import {AppLoader} from "../../../@crema";
@@ -8,19 +8,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {EDIT_DATA} from "../../../shared/constants/ActionTypes";
 import FormInput from "../../../@crema/core/Form/FormInput";
 import {MinusCircleOutlined} from "@ant-design/icons";
+import FormInputNumber from "../../../@crema/core/Form/FormInputNumber";
 
+const {Title} = Typography
 const initialValueForm = {
     title_uz: "",
     title_ru: "",
     dealers: [
         {
             title_uz: "",
-            title_ru: ""
+            title_ru: "",
+            "dealer_telegram_ids": [
+                {
+                    "tg_id": null
+                }
+            ]
         }
     ]
 };
-
-
 
 
 const RegionPostEdit = () => {
@@ -29,8 +34,6 @@ const RegionPostEdit = () => {
     const navigate = useNavigate()
     const {editId} = useSelector(state => state.editData)
     const dispatch = useDispatch()
-
-
 
 
     // query-region
@@ -111,12 +114,14 @@ const RegionPostEdit = () => {
 
     //edit region
     useEffect(() => {
-const dealers=[]
+        const dealers = []
 
-        editRegionData?.dealers.map(dealer=>{
-            const data={
+        console.log(editRegionData)
+        editRegionData?.dealers.map(dealer => {
+            const data = {
                 title_uz: dealer.title_uz,
-                title_ru: dealer.title_ru
+                title_ru: dealer.title_ru,
+                dealer_telegram_ids:dealer.dealer_telegram_ids
             }
             dealers.push(data)
         })
@@ -138,7 +143,7 @@ const dealers=[]
     const onFinish = (values) => {
 
 
-
+        console.log(values)
         if (editRegionData) {
             putRegion({url: '/cars/region', data: values, id: editId})
         } else {
@@ -176,10 +181,6 @@ const dealers=[]
             window.removeEventListener('beforeunload', handleBeforeUnload);
         }
     }, []);
-
-
-
-
 
 
     return (
@@ -249,6 +250,57 @@ const dealers=[]
                                                     />
                                                 </Col>
                                             </Row>
+
+                                            <Form.List name={[field.name, "dealer_telegram_ids"]}
+                                                       style={{paddingLeft: '100px'}}>
+                                                {(fields, {add: addChild, remove: removeChild}) => (
+                                                    <>
+                                                        {fields.map((childField, childIndex) => {
+                                                            return (
+                                                                <div key={childField.fieldKey}
+                                                                     style={{marginBottom: 20}}>
+                                                                    <Row gutter={20}>
+
+                                                                        <Col span={20} offset={2}
+                                                                             className={'character-child'}>
+                                                                            <FormInputNumber
+                                                                                required={true}
+                                                                                required_text={'Требуется заполнение'}
+                                                                                label={`Идентификатор пользователя в Телеграмме ${childIndex + 1}`}
+                                                                                name={[childField.name, 'tg_id']}
+                                                                            />
+                                                                        </Col>
+
+                                                                        <Col span={6} offset={2}>
+
+                                                                            <Title level={3}> <MinusCircleOutlined
+                                                                                onClick={() => removeChild(childField.name)}/> Удалить
+                                                                                идентификатор пользователя в Телеграмме</Title>
+                                                                        </Col>
+                                                                    </Row>
+
+
+                                                                </div>
+
+                                                            );
+                                                        })}
+                                                        <Row>
+                                                            <Col offset={2} span={10}>
+                                                                <Form.Item>
+                                                                    <Button type="primary" onClick={() => addChild()}
+                                                                            block
+                                                                            style={{backgroundColor: '#1677ff'}}>
+                                                                        Нажмите, чтобы добавить нового пользователя
+                                                                    </Button>
+                                                                </Form.Item>
+
+                                                            </Col>
+                                                        </Row>
+
+                                                    </>
+                                                )}
+                                            </Form.List>
+
                                             <MinusCircleOutlined
                                                 onClick={() => remove(field.name)}/>
                                         </div>
