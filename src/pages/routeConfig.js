@@ -1,5 +1,5 @@
 import {IoDocumentLock, IoShareSocialSharp} from "react-icons/io5";
-import {FaCar, FaCity, FaImages, FaMapMarkedAlt} from "react-icons/fa";
+import {FaCar, FaCity, FaImages} from "react-icons/fa";
 import {IoMdInformationCircle} from "react-icons/io";
 import {TiContacts, TiWorld} from "react-icons/ti";
 import {BsReverseLayoutTextSidebarReverse} from "react-icons/bs";
@@ -125,14 +125,14 @@ const routesConfig = [
                 icon: <FaImages />,
                 path: '/banner',
             },
-            {
-                id: 'map',
-                title: 'map',
-                messageId: 'sidebar.sample.map',
-                type: 'item',
-                icon: <FaMapMarkedAlt />,
-                path: '/map',
-            },
+            // {
+            //     id: 'map',
+            //     title: 'map',
+            //     messageId: 'sidebar.sample.map',
+            //     type: 'item',
+            //     icon: <FaMapMarkedAlt />,
+            //     path: '/map',
+            // },
             {
                 id: 'news',
                 title: 'news',

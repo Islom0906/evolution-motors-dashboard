@@ -15,8 +15,8 @@ const Banner = React.lazy(() => import('./Banner'));
 const BannerPostEdit = React.lazy(() => import('./Banner/BannerPostEdit'));
 const Insurance = React.lazy(() => import('./Insurance'));
 const InsurancePostEdit = React.lazy(() => import('./Insurance/InsurancePostEdit'));
-const Map = React.lazy(() => import('./Map'));
-const MapPostEdit = React.lazy(() => import('./Map/MapPostEdit'));
+// const Map = React.lazy(() => import('./Map'));
+// const MapPostEdit = React.lazy(() => import('./Map/MapPostEdit'));
 const News = React.lazy(() => import('./News'));
 const NewsPostEdit = React.lazy(() => import('./News/NewsPostEdit'));
 const Service = React.lazy(() => import('./Service'));
@@ -94,16 +94,16 @@ export const samplePagesConfigs = [
     path: '/insurance/add',
     element: <InsurancePostEdit/>,
   },
-  {
-    permittedRole: RoutePermittedRole.user,
-    path: '/map',
-    element: <Map/>,
-  },
-  {
-    permittedRole: RoutePermittedRole.user,
-    path: '/map/add',
-    element: <MapPostEdit/>,
-  },
+  // {
+  //   permittedRole: RoutePermittedRole.user,
+  //   path: '/map',
+  //   element: <Map/>,
+  // },
+  // {
+  //   permittedRole: RoutePermittedRole.user,
+  //   path: '/map/add',
+  //   element: <MapPostEdit/>,
+  // },
   {
     permittedRole: RoutePermittedRole.user,
     path: '/news',

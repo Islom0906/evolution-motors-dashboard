@@ -917,8 +917,6 @@ const CarPostEdit = () => {
 
                     <Col span={12}>
                         <FormInput
-                            required={true}
-                            required_text={"Требуется заполнение"}
                             label={'Ссылка на видео на ютубе 1'}
                             name={'review_link_1'}
                         />
@@ -927,7 +925,6 @@ const CarPostEdit = () => {
                     </Col>
                     <Col span={12}>
                         <FormInput
-                            required={true} required_text={'Требуется заполнение'}
                             label={'Ссылка на видео на ютубе 2'}
                             name={'review_link_2'}
                         />
