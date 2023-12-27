@@ -11,7 +11,7 @@ const AppFooter = () => {
   if (!footer) {
     return (
       <Footer className='app-main-footer'>
-        <p>Created by:  <b> Abduganiev</b> </p>
+        <p>Created by:  <b> Marss Team</b> </p>
         {/* <div className='footer-btn-view'>
           <Button type='link' className='footer-btn' color='primary'>
             Buy Now

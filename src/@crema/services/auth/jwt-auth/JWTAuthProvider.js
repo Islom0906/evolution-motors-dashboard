@@ -101,6 +101,10 @@ const JWTAuthAuthProvider = ({children}) => {
   }, []);
 
   const signInUser = async ({phone, password}) => {
+    if (localStorage.getItem('emRefToken')){
+      localStorage.removeItem('emRefToken')
+    }
+
     dispatch({type: FETCH_START});
     try {
       const {data} = await jwtAxios.post(`/user/token/`,{phone, password});
